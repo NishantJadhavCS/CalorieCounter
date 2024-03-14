@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+
+<head>
+    <title>HealthYou</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/exercise.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burnt Calculators</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div id="get-started"><a href="userprofile.html">{{user.username}}</a></div>
+        {% else %}
+        <div id="get-started"><a href="login.html">Get Started</a></div>
+        {% endif %}
+    </div>
+    <div class="main_container">
+        <section class="text_container">
+            <h1>Select the Muscle you wish to Train..</h1>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="search_container">
+                    <select name="query1" class="search_box">
+                        <option value="" selected disabled>Select the Target Muscle Group</option>
+                        <option value="abdominals">Abdominals</option>
+                        <option value="abductors">Abductors</option>
+                        <option value="adductors">Adductors</option>
+                        <option value="biceps">Biceps</option>
+                        <option value="calves">Calves</option>
+                        <option value="chest">Chest</option>
+                        <option value="forearms">Forearms</option>
+                        <option value="glutes">Glutes</option>
+                        <option value="hamstrings">Hamstrings</option>
+                        <option value="lats">Lats</option>
+                        <option value="lower_back">Lower Back</option>
+                        <option value="middle_back">Middle Back</option>
+                        <option value="neck">Neck</option>
+                        <option value="quadriceps">Quadriceps</option>
+                        <option value="traps">Traps</option>
+                        <option value="triceps">Triceps</option>
+                    </select>
+                    <button class="search_button" type="submit" id="submit_button">Search</button>
+                </div>
+            </form>
+        </section>
+        <section class="image_container">
+            <img src="{% static 'images/dumbells.png' %}">
+        </section>
+    </div>
+    <section class="result_container">
+        {%if api%}
+        {%if api == 'There was an error!' %}
+        <div class="alert"> Oh no! something went wrong.Please try again in sometime. </div>
+        {%else %}
+        <div class="exercise_result">
+            {%for exercise in api%}
+            <div class="exercise">
+                <br>
+                <h2>{{ exercise.name |upper }}</h2>
+
+                <h3><strong>MUSCLE</strong>
+                    <h4> {{ exercise.muscle | capfirst }}</h4>
+                </h3>
+                <h3><strong>TYPE</strong>
+                    <h4>{{ exercise.type | capfirst }}</h4>
+                </h3>
+                <h3><strong>DIFFICULTY</strong>
+                    <h4>{{ exercise.difficulty | capfirst }}</h4>
+                </h3>
+                <h3><strong>EQUIPMENT</strong>
+                    <h4> {{ exercise.equipment|capfirst}}</h4>
+                </h3>
+                <h3><strong>INSTRUCTIONS</strong>
+                    <h4>{{ exercise.instructions }}</h4>
+                </h3>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
+    </section>
+
+</body>
+
+</html>

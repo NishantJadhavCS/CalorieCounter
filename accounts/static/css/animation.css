@@ -1,0 +1,263 @@
+@keyframes clipAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.clip-animation {
+    animation: clipAnimation 1s ease forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 1s;
+}
+
+@keyframes slideInFromAbove {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.slide-in-from-above {
+    animation: slideInFromAbove 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-down {
+    animation: fadeInDown 1s;
+}
+
+
+@keyframes fadefromright {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadefrombottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadefrombottom {
+    animation: fadefrombottom 1s ease 0s 1 alternate forwards;
+}
+
+.fadefromright {
+    animation: fadefromright 1s ease 0s 1 normal forwards;
+}
+
+@keyframes FadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.FadeInLeft {
+    animation: FadeInLeft 1s ease 0s 1 normal forwards;
+}
+
+@keyframes BGPanBottom {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 50% 50%;
+    }
+}
+
+.BGPanBottom {
+    animation: BGPanBottom 5s ease 0s 1 normal forwards;
+}
+
+@keyframes SlideFromRight {
+    0% {
+        opacity: 0;
+        transform: rotateX(-100deg);
+        transform-origin: top;
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+        transform-origin: top;
+    }
+}
+
+.SlideFromRight {
+    animation: SlideFromRight 1s ease 0s 1 alternate forwards;
+}
+
+@keyframes BounceTop {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: translateY(-250px);
+    }
+
+    38% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    55% {
+        animation-timing-function: ease-in;
+        transform: translateY(-65px);
+    }
+
+    72% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
+
+    81% {
+        animation-timing-function: ease-in;
+        transform: translateY(-28px);
+    }
+
+    90% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
+
+    95% {
+        animation-timing-function: ease-in;
+        transform: translateY(-8px);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
+}
+
+.BounceTop {
+    animation: BounceTop 1s ease 0s 1 normal forwards;
+}
+
+@keyframes ShakeVertical {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateY(-8px);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: translateY(8px);
+    }
+
+    80% {
+        transform: translateY(6.4px);
+    }
+
+    90% {
+        transform: translateY(-6.4px);
+    }
+}
+
+@keyframes HeartBeat {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
+
+.HeartBeat {
+    animation: HeartBeat 2s ease 0s 2 alternate forwards;
+}

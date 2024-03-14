@@ -1,0 +1,82 @@
+/* signup.css */
+
+body {
+  background-color: #a2d397;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signup-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 700px;
+  line-height: 1.5;
+  background-color: #58864e;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+  color: #fff;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 5px;
+  color: rgb(186, 238, 186);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  border: 1px solid #255e25;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  margin-left: 155px;
+  padding: 15px 25px;
+  background-color: #428054;
+  align-items: center;
+  width: 50%;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #316741;
+}

@@ -1,0 +1,184 @@
+@keyframes clipAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.clip-animation {
+    animation: clipAnimation 1s ease forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 1s;
+}
+
+@keyframes slideInFromAbove {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.slide-in-from-above {
+    animation: slideInFromAbove 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-down {
+    animation: fadeInDown 1s;
+}
+
+
+@keyframes fadefromright {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadefromright {
+    animation: fadefromright 1s ease 0s 1 normal forwards;
+}
+
+@keyframes fadefrombottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadefrombottom {
+    animation: fadefrombottom 1s ease 0s 1 alternate forwards;
+}
+
+@keyframes BounceTop {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: translateY(-250px);
+    }
+
+    38% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    55% {
+        animation-timing-function: ease-in;
+        transform: translateY(-65px);
+    }
+
+    72% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
+
+    81% {
+        animation-timing-function: ease-in;
+        transform: translateY(-28px);
+    }
+
+    90% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
+
+    95% {
+        animation-timing-function: ease-in;
+        transform: translateY(-8px);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
+}
+
+.BounceTop {
+    animation: BounceTop 1s ease 0s 1 normal forwards;
+}
+
+@keyframes BGPanBottom {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 50% 50%;
+    }
+}
+
+.BGPanBottom {
+    animation: BGPanBottom 5s ease 0s 1 normal forwards;
+}
+
+@keyframes FadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.FadeInLeft {
+    animation: FadeInLeft 1s ease 0s 1 normal forwards;
+}

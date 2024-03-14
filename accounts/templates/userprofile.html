@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <title>HealthYou</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userprofile.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burnt Calculators</a></li>
+        </ul>
+    </div>
+    <div class="main_container">
+        <section class="left_container">
+            <h1>Welcome, {{ user.username }}!</h1>
+            <div class="profile-details">
+                <h2>Email: {{ user.userprofile.email }}</h2>
+                <h2>Age: {{ user.userprofile.age }}</h2>
+                <h2>Gender: {{ user.userprofile.gender | capfirst}}</h2>
+                <h2>Height: {{ user.userprofile.height }} cm</h2>
+                <h2>Weight: {{ user.userprofile.weight }} kg</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="logout-button" type="submit">Logout</button>
+                </form>
+            </div>
+        </section>
+        <section class="right_container">
+            <div class="image-container">
+                <img src="{% static 'images/signup.jpg' %}">
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

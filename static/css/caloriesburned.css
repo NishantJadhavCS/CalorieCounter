@@ -1,0 +1,9 @@
+body{
+    background-color: #ecf3ebf8;
+}
+.calculator{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 50px;
+}

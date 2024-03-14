@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <title>HealthYou</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/caloriesburned.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burned Calculators</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div id="get-started"><a href="userprofile.html">{{user.username}}</a></div>
+        {% else %}
+        <div id="get-started"><a href="login.html">Get Started</a></div>
+        {% endif %}
+    </div>
+    <div class="main_container">
+        <section class="text_container">
+            <h1>Activity Search</h1>
+            <form method="post">
+                {% csrf_token %}
+                <label for="activity-select">
+                    <h1 style="font-size: 28px;">Select an option</h1>
+                </label>
+                <br>
+                <select id="activity-select" name="activity">
+                    <option value="non game|Playing basketball, non game">Basketball</option>
+                    <option value="lawn bowling|Shuffleboard, lawn bowling">Bowling</option>
+                    <option value="high impact|Aerobics, high impact">Calisthenics</option>
+                    <option value="carrying 10 to 20 lb|Climbing hills, carrying 10 to 20 lb">Climbing Hills</option>
+                    <option value="batting|Cricket (batting, bowling)">Cricket</option>
+                    <option value="leisure bicycling|Cycling, <10 mph, leisure bicycling">Cycling</option>
+                    <option value="soccer|Playing soccer">Football</option>
+                    <option value="golf|Golf, miniature golf">Golf</option>
+                    <option value="hatha yoga|Stretching, hatha yoga">Hatha Yoga</option>
+                    <option value="iking|Hiking, cross country">Hiking</option>
+                    <option value="field hockey|Hockey, field hockey">Hockey</option>
+                    <option value="moderate|Jumping rope, moderate">Jumping Rope</option>
+                    <option value="boxing|Martial arts, kick boxing">Kickboxing, Martial Arts</option>
+                    <option value="rappelling|Rock climbing, rappelling">Rock Climbing</option>
+                    <option value="6 mph (10 min mile)|Running, 6 mph (10 min mile)">Running</option>
+                    <option value="boarding|Skateboarding">Skateboarding</option>
+                    <option value="stretching|Mild stretching">Stretching</option>
+                    <option value="tennis|Table tennis, ping pong">Table Tennis</option>
+                    <option value="tennis|Playing tennis">Tennis</option>
+                    <option value="volleyball|Playing volleyball">Volleyball</option>
+                    <option value="moderate|Walking 3.0 mph, moderate">Walking </option>
+                    <option value="uphill|Walking 3.5 mph, uphill">Walking Uphill</option>
+                    <option value="polo|Water polo">Water Polo</option>
+                    <option value="body building|Weight lifting, body building, vigorous">Weightlifting</option>
+                    <option value="restling|Wrestling">Wrestling</option>
+                </select>
+                <br>
+                <label for="weight">Weight (kg) </label>
+                <br>
+                <input type="number" id="weight" name="weight" min="23" required>
+                <br>
+                <label for="duration">Duration</label>
+                <br>
+                <input type="number" id="duration" name="duration" min="1" required>
+                <br>
+                <button class="search_button" type="submit" id="submit_button">Search</button>
+            </form>
+        </section>
+        <section class="image_container">
+            <img src="{% static 'images/calburned.png' %}">
+        </section>
+    </div>
+    <div class="results">
+        {%if api%}
+        <h2>You have burned a total of {{api.0.total_calories}} calories</h2>
+        <h3>Calories per Hour: <I>{{api.0.calories_per_hour}}</I></h3>
+        {% endif %}
+    </div>
+</body>
+
+</html>

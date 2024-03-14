@@ -1,0 +1,68 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/additionalinfo.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>HealthyYou - Sign Up</title>
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burnt Calculators</a></li>
+        </ul>
+    </div>
+    <div class="main_container">
+        <section class="left_container">
+            <div class="signup-container">
+                <h1>Enter your additional info!</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="{{ form.email.id_for_label }}">Email ID</label>
+                    {{ form.email }}
+                    <br>
+                    <label for="{{ form.age.id_for_label }}">Age</label>
+                    {{ form.age }}
+                    <br>
+                    <label for="{{ form.gender.id_for_label }}">Gender</label>
+                    {{ form.gender }}
+                    <br>
+                    <label for="{{ form.height.id_for_label }}">Height (in cm)</label>
+                    {{ form.height }}
+                    <br>
+                    <label for="{{ form.weight.id_for_label }}">Weight (in kg)</label>
+                    {{ form.weight }}
+                    <br>
+                    <button type="submit">Sign Up</button>
+                    {% if form.errors %}
+                    <p>Please correct the errors below:</p>
+                    {{ form.errors }}
+                    {% endif %}
+                </form>
+                <h4>Already a member? <a href="login.html">Save</a></h4>
+            </div>
+        </section>
+        <section class="right_container">
+            <div class="image-container">
+                <img src="{% static 'images/signup.jpg' %}">
+            </div>
+        </section>
+    </div>
+</body>
+</html>

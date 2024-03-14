@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <title>HealthYou</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script>
+        AOS.init();
+    </script>
+    <style>
+        #section-banner {
+            background-image: url('{% static "images/gym.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: BGPanBottom 5s ease 0s 1 alternate forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burnt Calculators</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div id="get-started"><a href="userprofile.html">{{user.username}}</a></div>
+        {% else %}
+        <div id="get-started"><a href="login.html">Get Started</a></div>
+        {% endif %}
+    </div>
+
+    <section class="intro">
+        <section class="text-content">
+            <h1>Welcome to HealthyYou!</h1>
+            <div id="about">
+                <h2>We are a website dedicated to helping people live healthier lives!</h2>
+                <h2>We offer various tools for you to keep your health in check.</h2>
+                <br><br>
+                {% if user.is_authenticated %}
+
+                {% else %}
+                <a href="signup.html" class="signup-button">Sign Up</a>
+                {% endif %}
+            </div>
+        </section>
+        <section class="image-content">
+            <img src="{% static 'images/bottle1.jpg' %}">
+        </section>
+    </section>
+    <div id="section-banner">
+        <div id="slogan">
+            <h1>"Health is a journey, not a destination."</h1>
+        </div>
+    </div>
+    <div id="about-section">
+        <h1>Contact</h1>
+        <div class="contact_item">
+            <a href="https://wa.me/918928755993" target="_blank">
+                <img src="{% static 'images/whatsapp.png' %}" alt="Whatsapp">
+            </a>
+            <h3>&nbsp;&nbsp;&nbsp;</h3>
+            <a href="mailto:healthyyou144@gmail.com">
+                <img src="{% static 'images/gmail.png' %}" alt="Whatsapp">
+            </a>
+            <h3>&nbsp;&nbsp;&nbsp;</h3>
+            <a href="https://www.instagram.com/nishnt__10/" target="_blank">
+                <img src="{% static 'images/insta.png' %}" alt="Whatsapp">
+            </a>
+            <h3>&nbsp;&nbsp;&nbsp;</h3>
+        </div>
+    </div>
+</body>
+
+</html>

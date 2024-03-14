@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/healthcalc.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="{% static 'js/healthcalc.js' %}"></script>
+    <title>Health Calculators</title>
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burnt Calculators</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div id="get-started"><a href="userprofile.html">{{user.username}}</a></div>
+        {% else %}
+        <div id="get-started"><a href="login.html">Get Started</a></div>
+        {% endif %}
+    </div>
+    <div class="container">
+        <section class="calculator_section">
+            <section class="left_section">
+                <section class="text_section">
+                    <h2 style="font-weight: bold; animation: FadeInLeft 1s ease 0s 1 normal forwards;">Welcome to health
+                        calculators! </h2>
+                    <label for="calculatorSelect" style="font-size: 45px; font-family: 'Lato', sans-serif;">Select a
+                        Calculator</label><br>
+                    <select id="calculatorSelect" onchange="showCalculator()">
+                        <option value="none">Select Calculator</option>
+                        <option value="bmi">BMI Calculator</option>
+                        <option value="bmr">BMR Calculator</option>
+                        <option value="calorie_intake">Calorie Intake Calculator</option>
+                        <option value="heart_rate">Heart Rate Calculator</option>
+                        <option value="water_intake">Water Intake Calculator</option>
+                    </select>
+                </section>
+                <section class="bottom_section">
+                    <div id="calculatorContainer" class="calculator">
+                        <div id="bmiCalculator" class="calculator">
+                            <h2>Body Mass Index (BMI) Calculator</h2>
+                            <br>
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" placeholder="Enter weight in kg" step="0.1" required>
+                            <br><br>
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height" placeholder="Enter height in cm" step="0.1" required>
+                            <br>
+                            <button onclick="calculateBMI()">Calculate BMI</button>
+                            <br>
+                            <div id="bmiResult"></div>
+                        </div>
+
+                        <div id="bmrCalculator" class="calculator">
+                            <h2>Basal Metabolic Rate (BMR) Calculator</h2>
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <br><br>
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight1" placeholder="Enter weight in kg" required>
+                            <br><br>
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height1" placeholder="Enter height in cm" required>
+                            <br><br>
+                            <label for="age">Age</label>
+                            <input type="number" id="age" placeholder="Enter your age" required>
+                            <br>
+                            <button onclick="calculateBMR()">Calculate BMR</button>
+                            <br>
+                            <div id="bmrResult"></div>
+                        </div>
+
+                        <div id="calorieIntakeCalculator" class="calculator">
+                            <h2>Calorie Intake Calculator</h2>
+                            <label for="gender">Gender</label>
+                            <select id="gender2" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <br>
+                            <label for="age">Age</label>
+                            <input type="number" id="age2" placeholder="Enter your age" required>
+                            <br><br>
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight2" placeholder="Enter your weight in kg" required>
+                            <br><br>
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height2" placeholder="Enter your height in cm" required>
+                            <br><br>
+                            <label for="activityLevel">Activity Level</label>
+                            <select id="activityLevel" required>
+                                <option value="sedentary">Sedentary (little to no exercise)</option>
+                                <option value="lightly_active">Lightly Active (light exercise/sports 1-3 days/week)
+                                </option>
+                                <option value="moderately_active">Moderately Active (moderate exercise/sports 3-5
+                                    days/week)
+                                </option>
+                                <option value="very_active">Very Active (hard exercise/sports 6-7 days/week)</option>
+                                <option value="extra_active">Extra Active (very hard exercise/sports and a physical job)
+                                </option>
+                            </select>
+                            <br><br>
+                            <label for="goal">Weight Management Goal</label>
+                            <select id="goal" required>
+                                <option value="lose">Lose Weight</option>
+                                <option value="maintain">Maintain Weight</option>
+                                <option value="gain">Gain Weight</option>
+                            </select>
+                            <br><br>
+                            <button onclick="calorieIntakeCalculator()">Calculate Calorie Intake</button>
+                            <br>
+                            <div id="calorieIntakeResult">
+                            </div>
+                        </div>
+
+                        <div id="heartRateCalculator" class="calculator">
+                            <h2>Heart Rate Calculator</h2>
+                            <label for="age">Age</label>
+                            <input type="number" id="age3" placeholder="Enter your age" required>
+                            <br><br>
+                            <label for="fitnessLevel">Fitness Level</label>
+                            <select id="fitnessLevel" required>
+                                <option value="low">Low (Beginner)</option>
+                                <option value="moderate">Moderate (Intermediate)</option>
+                                <option value="high">High (Advanced)</option>
+                            </select>
+                            <br><br>
+                            <button onclick="heartRateCalculator()">Calculate Heart Rate</button>
+                            <br>
+                            <div id="heartRateResult">
+                            </div>
+                        </div>
+
+                        <div id="waterIntakeCalculator" class="calculator">
+                            <h2>Water Intake Calculator</h2>
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight4" placeholder="Enter your weight in kg" required>
+                            <br><br>
+                            <button onclick="waterIntakeCalculator()">Calculate Water Intake</button>
+                            <br>
+                            <div id="waterIntakeResult">
+                            </div>                           
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="image_container">
+                <img src="{% static 'images/greendumbells.png' %}">
+            </section>
+        </section>
+    </div>
+</body>
+</html>

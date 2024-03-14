@@ -1,0 +1,177 @@
+<html lang="en">
+{% load static %}
+{% load mathfilters %}
+{{foods}}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/calorie.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animation.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap" rel="stylesheet">
+    <title>Calorie Counter</title>
+</head>
+
+<body>
+    <div id="menu-bar">
+        <div id="logo"><a href="home.html">HealthyYou</a></div>
+        <ul>
+            <li><a href="calorie.html">Calorie Counter</a></li>
+            <li><a href="healthcalc.html">Health Calculators</a></li>
+            <li><a href="exercise.html">Exercises</a></li>
+            <li><a href="caloriesburned.html">Calories Burnt Calculators</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div id="get-started"><a href="userprofile.html">{{user.username}}</a></div>
+        {% else %}
+        <div id="get-started"><a href="login.html">Get Started</a></div>
+        {% endif %}
+    </div>
+
+    <div class="main_container">
+        <section class="left_container">
+            <h1>Know what you're eating.</h1>
+            <h2>Discover the power of nutrition</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="search-container">
+                    <input type="text" name="query" class="search-box" placeholder="Put your food here.." required>
+                    <br><br>
+                    <button class="search_button" type="submit" id="sbutton">Search</button>
+                </div>
+            </form>
+        </section>
+        <section class="right_container">
+            <div class="image_container">
+                <img src="{% static 'images/avocado.jpg' %}">
+            </div>
+        </section>
+    </div>
+    <section class="bottom">
+        {%if api%}
+        {%if api == "error" %}
+        <div> Oh no! something went wrong.Please try again in sometime.</div>
+        {% elif api == "not_found" %}
+        <h2>No result found for the provided query. Please enter a valid food item.</h2>
+        {%else %}
+        <h2 style="animation: FadeInLeft 1s ease 0s 1 normal forwards;"><strong> {{ api.0.name | capfirst }}</strong>
+            has a total of <strong> {{ api.0.calories }}
+                Calories</strong>
+        </h2>
+        {% if api.0.calories >= 200 %}
+        <h4>Please consume this food in moderation, and choose healthier alternatives whenever possible.</h4>
+        {%endif%}
+        <h4><strong>Nutritional Information</strong></h4>
+        {% if api.0.sodium_mg > 750 %}
+        <h3>This food is a major source of sodium, and consuming too much sodium can lead to health problems such as
+            high blood pressure, heart disease, and stroke.</h3>
+        {% endif %}
+        {% if api.0.sugar_g > 15 %}
+        <h3>This food contains an high amount of added sugar. Too much added sugar can lead to health problems such
+            as
+            obesity and type 2 diabetes.</h3>
+        <h4>Please consume this food in moderation, and choose healthier alternatives whenever possible.</h4>
+        {%endif%}
+    </section>
+    <section class="main_section">
+        <section class="left">
+            <table>
+                <tr>
+                    <th>Nutritional Values</th>
+                    <th>Serving size per 100/Grams</th>
+                </tr>
+                <tr>
+                    <td>Carbohydrates</td>
+                    <td>{{ api.0.carbohydrates_total_g }}</td>
+                </tr>
+                <tr>
+                    <td>Proteins</td>
+                    <td>{{ api.0.protein_g }}</td>
+                </tr>
+                <tr>
+                    <td>Total Fats</td>
+                    <td>{{ api.0.fat_total_g }}</td>
+                </tr>
+                <tr>
+                    <td>Saturated Fats</td>
+                    <td>{{ api.0.fat_saturated_g }}</td>
+                </tr>
+                <tr>
+                    <td>Cholestrol</td>
+                    <td>{{ api.0.cholesterol_mg }}</td>
+                </tr>
+                <tr>
+                    <td>Fibers</td>
+                    <td>{{ api.0.fiber_g }}</td>
+                </tr>
+                <tr>
+                    <td>Sugar</td>
+                    <td>{{ api.0.sugar_g }}</td>
+                </tr>
+                <tr>
+                    <td>Sodium (mg)</td>
+                    <td>{{ api.0.sodium_mg }}</td>
+                </tr>
+                <tr>
+                    <td>Potassium (mg)</td>
+                    <td>{{ api.0.potassium_mg }}</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="right">
+            <h4>To burn <b>{{ api.0.calories }}</b> calories you will have to</h4>
+            <div class="content-container">
+                <div class="image-container">
+                    <img src="{% static 'images/running.png' %}" alt="...">
+                </div>
+                <div class="text-container">
+                    <h5> Jog </h5>
+                    <p>you will have to jog for <strong>
+                            {{ api.0.calories | div:300 | mul:60 | floatformat:0 }}</strong> Minutes</p>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="image-container">
+                    <img src="{% static 'images/yoga.png' %}" alt="...">
+                </div>
+                <div class="text-container">
+                    <h5> Do Power Yoga </h5>
+                    <p>you will have to Power Yoga for <strong>
+                            {{ api.0.calories | div:181 | mul:60 | floatformat:0 }} </strong> Minutes</p>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="image-container">
+                    <img src="{% static 'images/gym.png' %}" alt="...">
+                </div>
+                <div class="text-container">
+                    <h5>Get a Gym Workout </h5>
+                    <p>you will have to lift weight for <strong>
+                            {{ api.0.calories | div:350 | mul:60 | floatformat:0 }} </strong> Minutes </p>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="image-container">
+                    <img src="{% static 'images/walking.png' %}" alt="...">
+                </div>
+                <div class="text-container">
+                    <h5> Go for a Brisk Walk </h5>
+                    <p>you will have to brisk walk for <strong>
+                            {{ api.0.calories | div:200 | mul:60 | floatformat:0 }} </strong> Minutes</p>
+                </div>
+        </section>
+    </section>
+    {%endif%}
+    {%endif%}
+</body>
+
+</html>
