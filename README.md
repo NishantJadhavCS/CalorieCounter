@@ -33,7 +33,8 @@ DATABASES = {
 6. Obtain API Keys from https://api-ninjas.com/api. Create a new account and get copy your API Key.
 Replace the 'YOUR_API_KEY' in accouts/views.py with your personal API Key.
 
-7. Create an Email ID from where you wish to send email to the user once logged in. You can do so by following the below steps:
+7. Create an Email ID from where you wish to send email to the user once logged in. Create a new Google account or use existing account for this.
+To allow Django to access your email id follow the below steps:
 Go to the "Less secure apps" section in the Google Account settings. You can find it by going to the Google Account page at https://myaccount.google.com/ and clicking on "Security" in the left-hand menu. Then, click on "Less secure app access" in the "Signing in to Google" section.
 Turn on the "Allow less secure apps" option. This will allow Django to authenticate with the SMTP server using your Gmail account.
 Then enter your own 'EMAIL_HOST' and 'EMAIL_HOST_PASSWORD'.
