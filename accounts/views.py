@@ -31,7 +31,7 @@ def additionalinfo(request):
             user_profile = form.save(commit=False)
             user_profile.user = request.user
             user_profile.save()
-            messages.success(request, 'Successfully signed up!')
+            messages.success(request, 'Successfully signed up!') #SENDING EMAILS TO USER
             welcomeemail(user_profile)
             return redirect('login.html')
     else:
@@ -77,7 +77,7 @@ def user_login(request):
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
-
+#SENDING EMAILS TO USER
 def welcomeemail(user):
     subject = 'Welcome to HealthyYou!'
     html_message = render_to_string('welcomeemail.html', {'user': user})
