@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'HealthyYou.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'healthyyoudb',
+        'NAME': 'DATABASE_NAME',
         'USER': 'root',
-        'PASSWORD': 'Nishant@144',
+        'PASSWORD': 'YOUR_SQL_PASSWORD',
         'HOST': 'localhost', 
         'PORT': '3306',  
     }
@@ -133,5 +133,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'healthyyou144@gmail.com'
-EMAIL_HOST_PASSWORD = 'qszf tcgs ckhn btir'
+EMAIL_HOST_USER = 'EMAIL_HOST'
+EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
