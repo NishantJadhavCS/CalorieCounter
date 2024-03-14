@@ -31,8 +31,8 @@ def additionalinfo(request):
             user_profile = form.save(commit=False)
             user_profile.user = request.user
             user_profile.save()
-            messages.success(request, 'Successfully signed up!') #SENDING EMAILS TO USER
-            welcomeemail(user_profile)
+            messages.success(request, 'Successfully signed up!') 
+            welcomeemail(user_profile) #SENDING EMAILS TO USER
             return redirect('login.html')
     else:
         form = AdditionalInfoForm()
