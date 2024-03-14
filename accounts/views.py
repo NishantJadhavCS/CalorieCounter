@@ -94,7 +94,7 @@ def calorie(request):
         query = request.POST.get('query')
         api_url = 'https://api.api-ninjas.com/v1/nutrition?query='
         api_request = requests.get(
-            api_url + query, headers={'X-Api-Key': 'b43aSNLjduQcsWaEDQZYuQ==jSapZRh9vZ3cup9l'})
+            api_url + query, headers={'X-Api-Key': 'YOUR_API_KEY'})
         try:
             api = json.loads(api_request.content)
             print(api_request.content)
@@ -126,7 +126,7 @@ def exercise(request):
             muscle)
 
         api_request = requests.get(api_url, params={'muscle': muscle}, headers={
-                                   'X-Api-Key': 'b43aSNLjduQcsWaEDQZYuQ==jSapZRh9vZ3cup9l'})
+                                   'X-Api-Key': 'YOUR_API_KEY'})
         try:
             api = json.loads(api_request.content)
             print(api_request.content)
@@ -149,7 +149,7 @@ def caloriesburned(request):
         weight = weight_kg * 2.20462
         duration = request.POST.get('duration')
         api_url = f'https://api.api-ninjas.com/v1/caloriesburned?activity={activity}&weight={weight}&duration={duration}'
-        headers = {'X-Api-Key': 'b43aSNLjduQcsWaEDQZYuQ==jSapZRh9vZ3cup9l'}
+        headers = {'X-Api-Key': 'YOUR_API_KEY'}
         api_request = requests.get(api_url, headers=headers)
         try:
             api_data = json.loads(api_request.content)
