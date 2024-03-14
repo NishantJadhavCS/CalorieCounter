@@ -38,7 +38,7 @@ Go to the "Less secure apps" section in the Google Account settings. You can fin
 Turn on the "Allow less secure apps" option. This will allow Django to authenticate with the SMTP server using your Gmail account.
 Then enter your own 'EMAIL_HOST' and 'EMAIL_HOST_PASSWORD'.
 
-###IF YOU DONT WISH TO SEND EMAILS AFTER USER SIGN IN JUST DELETE THE CODES WITH THE FOLLOWING COMMAND:###
+***IF YOU DONT WISH TO SEND EMAILS AFTER USER SIGN IN JUST DELETE THE CODES WITH THE FOLLOWING COMMAND:***
 #SENDING EMAILS TO USER
 
 For any further query email me at nishantjadhav.cs@gmail.com
