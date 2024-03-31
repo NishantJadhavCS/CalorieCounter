@@ -43,4 +43,8 @@ Then enter your own 'EMAIL_HOST' and 'EMAIL_HOST_PASSWORD'.
 
 #SENDING EMAILS TO USER
 
+To run the project on development server run the following command:
+
+python manage.py runserver
+
 For any further query email me at nishantjadhav.cs@gmail.com
